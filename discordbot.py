@@ -37,6 +37,8 @@ class my_modal(ui.Modal, title="🔒 Enter the code"):
             role = discord.utils.get(interaction.guild.roles, id=1084808172079960115)
         elif value == "vjyvgv6t": #알파크루즈 홀더
             role = discord.utils.get(interaction.guild.roles, id=1084808080094670929)
+        elif value == "pey4szow": #LN 홀더
+            role = discord.utils.get(interaction.guild.roles, id=1085086336857423962)
         elif value == "xo2ekz93": #GGLabs
             role = discord.utils.get(interaction.guild.roles, id=1084791050670977126)
         else:
