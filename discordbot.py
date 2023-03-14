@@ -74,9 +74,9 @@ async def activate_role(ctx):
     await ctx.send('>>> 굳갱랩스에 오신 것을 환영합니다. 👋\n전달받으신 **Actviate Code**를 입력하세요!', view=view)
 
 async def keep_alive():
-    await client.wait_until_ready()
+    await bot.wait_until_ready()
     while True:
-        await client.ping() # Discord 서버에 ping을 보냄
+        await bot.ping() # Discord 서버에 ping을 보냄
         await asyncio.sleep(60) # 60초마다 실행
 
 bot.loop.create_task(keep_alive())
