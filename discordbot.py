@@ -1,18 +1,9 @@
-from cmath import log
-from distutils.sysconfig import PREFIX
 import discord
-from dotenv import load_dotenv
-import os
 from discord.ext import commands
 from discord.ui import Button, View, Modal, TextInput
 from discord.enums import ButtonStyle
-from discord import Interaction, ui, app_commands
 import asyncio
-
-load_dotenv()
-
-PREFIX = os.environ['PREFIX']
-TOKEN = os.environ['TOKEN']
+from discord import Interaction, ui, app_commands
 
 class my_modal(ui.Modal, title="🔒 Enter the code"):
     answer = ui.TextInput(label="Role Code (8자리)", 
@@ -24,24 +15,14 @@ class my_modal(ui.Modal, title="🔒 Enter the code"):
         member = interaction.user
         
         value = self.answer.value
-        if value == "l902yqds": #선미야 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1083199181839143102)
-        elif value == "xkvcx5yq": #메토드 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084807036635721808)
-        elif value == "c77yznku": #팔라 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084807187773259817)
-        elif value == "jbj2m5aj": #슈퍼위크 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084807391599673394)
-        elif value == "ti5o3jbj": #스니커즈 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084806863863951431)
-        elif value == "pl0w3zdw": #시티즌 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084808172079960115)
-        elif value == "vjyvgv6t": #알파크루즈 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1084808080094670929)
-        elif value == "pey4szow": #LN 홀더
-            role = discord.utils.get(interaction.guild.roles, id=1085086336857423962)
-        elif value == "xo2ekz93": #GGLabs
-            role = discord.utils.get(interaction.guild.roles, id=1084791050670977126)
+        if value == "코드":
+            role = discord.utils.get(interaction.guild.roles, id=역할ID)
+        elif value == "코드":
+            role = discord.utils.get(interaction.guild.roles, id=역할ID)
+        elif value == "코드": 
+            role = discord.utils.get(interaction.guild.roles, id=역할ID)
+        elif value == "코드": 
+            role = discord.utils.get(interaction.guild.roles, id=역할ID)
         else:
             await interaction.response.send_message(f"전달 받으신 코드를 다시 한번 확인해주세요!", ephemeral=True)
             return
@@ -55,11 +36,10 @@ class my_modal(ui.Modal, title="🔒 Enter the code"):
     
 bot = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 
-
 @bot.event
 async def on_ready():
     print('Bot is ready')
-    bot.loop.create_task(keep_alive())
+
 
 @bot.command()
 async def activate_role(ctx):
@@ -76,17 +56,7 @@ async def activate_role(ctx):
     await ctx.send('>>> 굳갱랩스에 오신 것을 환영합니다. 👋\n전달받으신 **Actviate Code**를 입력하세요!', view=view)
 
 
-async def keep_alive():
-    await client.wait_until_ready()
-    while not client.is_closed():
-        try:
-            await client.ping()
-        except:
-            pass
-        await asyncio.sleep(60)
+bot.run('TOKEN')
 
-        
-try:
-    bot.run(TOKEN)
-except discord.errors.LoginFailure as e:
-    print("Improper token has been passed.")
+
+
