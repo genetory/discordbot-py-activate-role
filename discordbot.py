@@ -6,7 +6,6 @@ import os
 from discord.ext import commands
 from discord.ui import Button, View, Modal, TextInput
 from discord.enums import ButtonStyle
-import logging
 from discord import Interaction, ui, app_commands
 
 load_dotenv()
@@ -75,6 +74,6 @@ async def activate_role(ctx):
 
 
 try:
-    bot.run('MTA4MDQ4MjU5NzY2NDIxNTA4MQ.GrUQk9.kfHI1Ho0K15HB8NiSCNafIDHalB8Fqe-lZkEy4')
+    bot.run(TOKEN)
 except discord.errors.LoginFailure as e:
     print("Improper token has been passed.")
