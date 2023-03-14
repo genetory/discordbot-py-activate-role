@@ -7,6 +7,7 @@ from discord.ext import commands
 from discord.ui import Button, View, Modal, TextInput
 from discord.enums import ButtonStyle
 from discord import Interaction, ui, app_commands
+import asyncio
 
 load_dotenv()
 
