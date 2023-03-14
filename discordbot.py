@@ -74,6 +74,7 @@ async def activate_role(ctx):
 
     await ctx.send('>>> 굳갱랩스에 오신 것을 환영합니다. 👋\n전달받으신 **Actviate Code**를 입력하세요!', view=view)
 
+@bot.command()
 async def keep_alive():
     await bot.wait_until_ready()
     while True:
