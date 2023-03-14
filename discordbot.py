@@ -59,6 +59,7 @@ bot = commands.Bot(command_prefix='!',intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     print('Bot is ready')
+    bot.loop.create_task(my_background_task())
 
 @bot.command()
 async def activate_role(ctx):
@@ -75,13 +76,14 @@ async def activate_role(ctx):
     await ctx.send('>>> 굳갱랩스에 오신 것을 환영합니다. 👋\n전달받으신 **Actviate Code**를 입력하세요!', view=view)
 
 
-async def keep_alive():
+async def my_background_task():
     await bot.wait_until_ready()
-    while True:
-        await bot.ping() # Discord 서버에 ping을 보냄
+    counter = 0
+    channel = bot.get_channel(1084785669739642971) # 채널 ID를 입력해주세요
+    while not bot.is_closed():
+        counter += 1
+        await channel.send(counter)
         await asyncio.sleep(60) # 60초마다 실행
-
-bot.loop.create_task(keep_alive())
 
         
 try:
